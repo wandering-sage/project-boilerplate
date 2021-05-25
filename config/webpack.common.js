@@ -1,6 +1,5 @@
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const paths = require("./paths");
 
@@ -41,8 +40,6 @@ module.exports = {
 		],
 	},
 	plugins: [
-		// Removes/cleans build folders and unused assets when rebuilding
-		new CleanWebpackPlugin(),
 
 		// Copies files from target to destination folder
 		new CopyWebpackPlugin({

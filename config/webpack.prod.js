@@ -6,12 +6,19 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = merge(common, {
 	mode: "production",
+
+	target: "browserslist",
+
 	devtool: false,
+
 	output: {
 		filename: "js/[name]-[contenthash]-bundle.js",
 		publicPath: "/",
 		path: paths.build,
+		clean: true,
+		assetModuleFilename: 'assets/[hash][ext][query]'
 	},
+
 	optimization: {
 		minimize: true,
 		minimizer: [new CssMinimizerPlugin(), "..."],
@@ -19,6 +26,7 @@ module.exports = merge(common, {
 			name: "runtime",
 		},
 	},
+
 	plugins: [
 		// Extracts CSS into separate files
 		new MiniCssExtractPlugin({
@@ -26,6 +34,7 @@ module.exports = merge(common, {
 			chunkFilename: "[id].css",
 		}),
 	],
+
 	module: {
 		rules: [
 			{
@@ -36,9 +45,11 @@ module.exports = merge(common, {
 					"postcss-loader",
 					"sass-loader",
 				],
+				
 			},
 		],
 	},
+
 	performance: {
 		hints: false,
 		maxEntrypointSize: 512000,

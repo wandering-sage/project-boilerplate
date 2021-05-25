@@ -17,6 +17,8 @@ module.exports = merge(common, {
 		port: 3000,
 	},
 
+	target: 'web',
+	
 	module: {
 		rules: [
 			{
